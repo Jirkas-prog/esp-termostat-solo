@@ -1,0 +1,160 @@
+# Home Assistant package; independent from the redundant A/B thermostat.
+# No automation controls the pump. Difference has no temperature device_class (avoid Fahrenheit offsets).
+mqtt:
+  sensor:
+  - name: Kamna SOLO Vstup
+    unique_id: kamna_solo_inlet
+    default_entity_id: sensor.kamna_solo_inlet
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.inlet }}'
+    availability_topic: wifi2mqtt/termostat-solo/state
+    availability_template: '{{ ''online'' if value_json.inlet is not none else ''offline''
+      }}'
+    unit_of_measurement: °C
+    state_class: measurement
+    expire_after: 190
+    device_class: temperature
+  - name: Kamna SOLO Výstup
+    unique_id: kamna_solo_outlet
+    default_entity_id: sensor.kamna_solo_outlet
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.outlet }}'
+    availability_topic: wifi2mqtt/termostat-solo/state
+    availability_template: '{{ ''online'' if value_json.outlet is not none else ''offline''
+      }}'
+    unit_of_measurement: °C
+    state_class: measurement
+    expire_after: 190
+    device_class: temperature
+  - name: Kamna SOLO Průměr
+    unique_id: kamna_solo_average
+    default_entity_id: sensor.kamna_solo_average
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.average }}'
+    availability_topic: wifi2mqtt/termostat-solo/state
+    availability_template: '{{ ''online'' if value_json.average is not none else ''offline''
+      }}'
+    unit_of_measurement: °C
+    state_class: measurement
+    expire_after: 190
+    device_class: temperature
+  - name: Kamna SOLO Minimum
+    unique_id: kamna_solo_minimum
+    default_entity_id: sensor.kamna_solo_minimum
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.minimum }}'
+    availability_topic: wifi2mqtt/termostat-solo/state
+    availability_template: '{{ ''online'' if value_json.minimum is not none else ''offline''
+      }}'
+    unit_of_measurement: °C
+    state_class: measurement
+    expire_after: 190
+    device_class: temperature
+  - name: Kamna SOLO Maximum
+    unique_id: kamna_solo_maximum
+    default_entity_id: sensor.kamna_solo_maximum
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.maximum }}'
+    availability_topic: wifi2mqtt/termostat-solo/state
+    availability_template: '{{ ''online'' if value_json.maximum is not none else ''offline''
+      }}'
+    unit_of_measurement: °C
+    state_class: measurement
+    expire_after: 190
+    device_class: temperature
+  - name: Kamna SOLO Diference výstup minus vstup
+    unique_id: kamna_solo_difference
+    default_entity_id: sensor.kamna_solo_difference
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.difference }}'
+    availability_topic: wifi2mqtt/termostat-solo/state
+    availability_template: '{{ ''online'' if value_json.difference is not none else
+      ''offline'' }}'
+    unit_of_measurement: °C
+    state_class: measurement
+    expire_after: 190
+  - name: Kamna SOLO diagnostika
+    unique_id: kamna_solo_diagnostics
+    default_entity_id: sensor.kamna_solo_diagnostics
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ value_json.faults }}'
+    json_attributes_topic: wifi2mqtt/termostat-solo/state
+    expire_after: 190
+  binary_sensor:
+  - name: Kamna SOLO Požadavek oběhu (i simulace)
+    unique_id: kamna_solo_pump_request
+    default_entity_id: binary_sensor.kamna_solo_pump_request
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ ''ON'' if value_json.pump_request else ''OFF'' }}'
+    expire_after: 190
+  - name: Kamna SOLO Výstup povolen
+    unique_id: kamna_solo_output_enabled
+    default_entity_id: binary_sensor.kamna_solo_output_enabled
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ ''ON'' if value_json.output_enabled else ''OFF'' }}'
+    expire_after: 190
+  - name: Kamna SOLO Závada
+    unique_id: kamna_solo_fault
+    default_entity_id: binary_sensor.kamna_solo_fault
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ ''ON'' if value_json.faults != 0 else ''OFF'' }}'
+    expire_after: 190
+    device_class: problem
+  - name: Kamna SOLO Závada sondy 1 GPIO27
+    unique_id: kamna_solo_sensor1_error
+    default_entity_id: binary_sensor.kamna_solo_sensor1_error
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ ''ON'' if not value_json.sensor1.valid else ''OFF'' }}'
+    expire_after: 190
+    device_class: problem
+  - name: Kamna SOLO Závada sondy 2 GPIO26
+    unique_id: kamna_solo_sensor2_error
+    default_entity_id: binary_sensor.kamna_solo_sensor2_error
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ ''ON'' if not value_json.sensor2.valid else ''OFF'' }}'
+    expire_after: 190
+    device_class: problem
+  - name: Kamna SOLO spojení
+    unique_id: kamna_solo_connection
+    default_entity_id: binary_sensor.kamna_solo_connection
+    state_topic: wifi2mqtt/termostat-solo/state
+    value_template: '{{ ''ON'' if value_json.sequence is defined else ''OFF'' }}'
+    off_delay: 190
+    device_class: connectivity
+automation:
+- id: kamna_solo_delivery_ack
+  alias: Kamna SOLO potvrzení doručení
+  mode: queued
+  max: 5
+  triggers:
+  - trigger: mqtt
+    topic: wifi2mqtt/termostat-solo/state
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.payload_json.sequence is defined }}'
+  actions:
+  - action: mqtt.publish
+    data:
+      topic: wifi2mqtt/termostat-solo/ack
+      payload: '{{ trigger.payload_json.sequence }}'
+      qos: 1
+      retain: false
+- id: kamna_solo_fault_log
+  alias: Kamna SOLO zápis diagnostiky
+  mode: queued
+  max: 10
+  triggers:
+  - trigger: state
+    entity_id: sensor.kamna_solo_diagnostics
+    to: null
+  conditions:
+  - condition: template
+    value_template: '{{ trigger.to_state is not none and (trigger.from_state is none
+      or trigger.from_state.state != trigger.to_state.state) }}'
+  actions:
+  - action: logbook.log
+    data:
+      name: Kamna SOLO
+      entity_id: sensor.kamna_solo_diagnostics
+      message: 'Maska závad: {{ trigger.to_state.state }}; boot: {{ trigger.to_state.attributes.get(''boot'',
+        ''?'') }}'

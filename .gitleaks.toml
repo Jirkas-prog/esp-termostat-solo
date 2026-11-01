@@ -1,0 +1,14 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Hexadecimal character alphabet, not a credential"
+condition = "AND"
+paths = ['''^common/network_config\.cpp$''']
+regexes = ['''0123456789abcdefABCDEF''']
+
+[[allowlists]]
+description = "Synthetic session token used only by host tests"
+condition = "AND"
+paths = ['''^tests/policy_tests\.cpp$''']
+regexes = ['''0123456789abcdef0123456789abcdef''']

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="1460" viewBox="0 0 1320 1460">
+<rect width="1320" height="1460" fill="#f4f7fb"/>
+<style>text{font-family:Arial,sans-serif;fill:#152b42} .small{font-size:16px}</style>
+<text x="40" y="52" font-size="32" style="fill:#152b42" font-weight="700">ESP TERMOSTAT SOLO</text>
+<text x="40" y="85" font-size="22" style="fill:#152b42" font-weight="400">T-Display • dvě sondy na 3,3 V • Wi-Fi / MQTT • upravený konektor</text>
+<rect x="40" y="103" width="1240" height="42" rx="12" fill="#e1f3e7" stroke="#64a77b" stroke-width="2"/>
+<text x="60" y="131" font-size="19" style="fill:#152b42" font-weight="700">FÁZE 1: režim NONE — měření a simulace, budič ani relé zatím nepřipojovat.</text>
+<rect x="40" y="177" width="340" height="360" rx="12" fill="#fff" stroke="#71879c" stroke-width="2"/>
+<text x="64" y="212" font-size="23" style="fill:#152b42" font-weight="700">LILYGO / TTGO T-Display</text>
+<text x="64" y="240" font-size="18" style="fill:#152b42" font-weight="400">Původní ESP32, ne S3</text>
+<rect x="65" y="260" width="285" height="120" rx="12" fill="#112b42" stroke="#112b42" stroke-width="2"/>
+<text x="80" y="289" font-size="21" style="fill:#ffffff" font-weight="700">Vstup       Výstup</text>
+<text x="80" y="316" font-size="18" style="fill:#d6efff" font-weight="400">Průměr / Min / Max / ΔT</text>
+<text x="80" y="343" font-size="19" style="fill:#ffdf7d" font-weight="700">ON / OFF — SIMULACE</text>
+<text x="65" y="411" font-size="18" style="fill:#152b42" font-weight="400">GPIO27 / GPIO26: 1-Wire</text>
+<text x="65" y="441" font-size="18" style="fill:#152b42" font-weight="400">GPIO25 / GPIO33: IN1 / IN2</text>
+<text x="65" y="480" font-size="18" style="fill:#152b42" font-weight="700">5 V vstup přes USB / 5V pin</text>
+<text x="65" y="508" font-size="17" style="fill:#152b42" font-weight="400">3V3 regulátor → napájení sond</text>
+<rect x="450" y="177" width="200" height="360" rx="12" fill="#eaf0f6" stroke="#71879c" stroke-width="2"/>
+<text x="471" y="208" font-size="20" style="fill:#152b42" font-weight="700">KONEKTOR</text>
+<text x="476" y="251" font-size="20" style="fill:#4e6070" font-weight="700">GND</text>
+<circle cx="635" cy="245" r="5" fill="#4e6070"/>
+<text x="476" y="297" font-size="20" style="fill:#be4536" font-weight="700">3V3</text>
+<circle cx="635" cy="291" r="5" fill="#be4536"/>
+<text x="476" y="343" font-size="20" style="fill:#167896" font-weight="700">GPIO27</text>
+<circle cx="635" cy="337" r="5" fill="#167896"/>
+<text x="476" y="389" font-size="20" style="fill:#167896" font-weight="700">GPIO26</text>
+<circle cx="635" cy="383" r="5" fill="#167896"/>
+<text x="476" y="435" font-size="20" style="fill:#9064a8" font-weight="700">GPIO25</text>
+<circle cx="635" cy="429" r="5" fill="#9064a8"/>
+<text x="476" y="481" font-size="20" style="fill:#9064a8" font-weight="700">GPIO33</text>
+<circle cx="635" cy="475" r="5" fill="#9064a8"/>
+<text x="455" y="564" font-size="16" style="fill:#a54822" font-weight="700">5V vodič přepojit na 3V3!</text>
+<text x="455" y="585" font-size="16" style="fill:#152b42" font-weight="400">Pořadí ověř podle pájení.</text>
+<polyline points="380,390 415,390 415,354 450,354" fill="none" stroke="#71879c" stroke-width="3"/>
+<polyline points="650,245 770,245" fill="none" stroke="#4e6070" stroke-width="3"/>
+<text x="680" y="234" font-size="16" style="fill:#152b42" font-weight="400">GND společná</text>
+<polyline points="650,291 770,291" fill="none" stroke="#be4536" stroke-width="3"/>
+<text x="681" y="279" font-size="16" style="fill:#be4536" font-weight="400">3V3 → VDD</text>
+<rect x="850" y="177" width="430" height="160" rx="12" fill="#fff" stroke="#71879c" stroke-width="2"/>
+<text x="870" y="210" font-size="23" style="fill:#152b42" font-weight="700">SONDA 1 — VSTUP</text>
+<text x="870" y="240" font-size="19" style="fill:#152b42" font-weight="400">DS18B20 před výměníkem</text>
+<text x="870" y="268" font-size="18" style="fill:#152b42" font-weight="400">VDD = 3,3 V    GND = společná</text>
+<text x="870" y="304" font-size="18" style="fill:#167896" font-weight="700">DQ → GPIO27, HIGH = 3,3 V</text>
+<polyline points="650,337 800,337 800,299 850,299" fill="none" stroke="#167896" stroke-width="3"/>
+<rect x="850" y="365" width="430" height="160" rx="12" fill="#fff" stroke="#71879c" stroke-width="2"/>
+<text x="870" y="398" font-size="23" style="fill:#152b42" font-weight="700">SONDA 2 — VÝSTUP</text>
+<text x="870" y="428" font-size="19" style="fill:#152b42" font-weight="400">DS18B20 za výměníkem</text>
+<text x="870" y="456" font-size="18" style="fill:#152b42" font-weight="400">VDD = 3,3 V    GND = společná</text>
+<text x="870" y="492" font-size="18" style="fill:#167896" font-weight="700">DQ → GPIO26, HIGH = 3,3 V</text>
+<polyline points="650,383 780,383 780,487 850,487" fill="none" stroke="#167896" stroke-width="3"/>
+<rect x="850" y="565" width="430" height="208" rx="12" fill="#f5f0fa" stroke="#9064a8" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="870" y="597" font-size="22" style="fill:#152b42" font-weight="700">POZDĚJI: DRV8833 + 5V relé</text>
+<text x="870" y="628" font-size="18" style="fill:#152b42" font-weight="400">AIN1 = GPIO25   AIN2 = GPIO33</text>
+<text x="870" y="658" font-size="17" style="fill:#152b42" font-weight="400">VM = 5 V samostatně; ne z 3V3 konektoru</text>
+<text x="870" y="688" font-size="16" style="fill:#152b42" font-weight="400">nSLEEP → 47k → 5 V; vstupy → 10k → GND</text>
+<text x="870" y="718" font-size="18" style="fill:#152b42" font-weight="400">Cívka mezi AOUT1 a AOUT2</text>
+<text x="870" y="749" font-size="18" style="fill:#75478e" font-weight="700">00 = bez buzení • nyní nepřipojovat</text>
+<polyline points="650,429 720,429 720,617 850,617" fill="none" stroke="#9064a8" stroke-width="3" stroke-dasharray="7 5"/>
+<polyline points="650,475 700,475 700,641 850,641" fill="none" stroke="#9064a8" stroke-width="3" stroke-dasharray="7 5"/>
+<rect x="40" y="620" width="620" height="300" rx="12" fill="#fff4dd" stroke="#d3a94a" stroke-width="2"/>
+<text x="62" y="652" font-size="21" style="fill:#152b42" font-weight="700">DQ PULL-UP: externí odpory uvnitř pouzdra</text>
+<text x="62" y="679" font-size="19" style="fill:#a54822" font-weight="700">Skutečný pin 3V3 — ne GPIO nastavený HIGH</text>
+<polyline points="180,706 530,706" fill="none" stroke="#a54822" stroke-width="3"/>
+<circle cx="230" cy="706" r="5" fill="#a54822"/>
+<polyline points="230,706 230,728" fill="none" stroke="#a54822" stroke-width="3"/>
+<rect x="222" y="728" width="16" height="42" fill="#fff" stroke="#a54822" stroke-width="2"/>
+<text x="247" y="754" font-size="16" style="fill:#152b42" font-weight="400">4,7 kΩ</text>
+<polyline points="230,770 230,801" fill="none" stroke="#167896" stroke-width="3"/>
+<circle cx="230" cy="801" r="5" fill="#167896"/>
+<text x="175" y="830" font-size="17" style="fill:#152b42" font-weight="400">DQ / GPIO27</text>
+<circle cx="500" cy="706" r="5" fill="#a54822"/>
+<polyline points="500,706 500,728" fill="none" stroke="#a54822" stroke-width="3"/>
+<rect x="492" y="728" width="16" height="42" fill="#fff" stroke="#a54822" stroke-width="2"/>
+<text x="517" y="754" font-size="16" style="fill:#152b42" font-weight="400">4,7 kΩ</text>
+<polyline points="500,770 500,801" fill="none" stroke="#167896" stroke-width="3"/>
+<circle cx="500" cy="801" r="5" fill="#167896"/>
+<text x="445" y="830" font-size="17" style="fill:#152b42" font-weight="400">DQ / GPIO26</text>
+<text x="62" y="865" font-size="18" style="fill:#a54822" font-weight="700">Interní pull-up GPIO27 i GPIO26 je zapnutý (0.2.0).</text>
+<text x="62" y="893" font-size="17" style="fill:#152b42" font-weight="400">Sondy přímo, bez adaptérů; každá vlastní 4,7kΩ.</text>
+<rect x="700" y="805" width="580" height="115" rx="12" fill="#fff" stroke="#71879c" stroke-width="2"/>
+<text x="721" y="836" font-size="21" style="fill:#152b42" font-weight="700">TTP224 (volitelně), napájení 3,3 V</text>
+<text x="721" y="867" font-size="20" style="fill:#152b42" font-weight="400">Zámek 32  /  − 17  /  + 36  /  Uložit 39</text>
+<text x="721" y="896" font-size="16" style="fill:#152b42" font-weight="400">Momentové HIGH; každý vstup pull-down 10k na GND.</text>
+<rect x="40" y="950" width="1240" height="262" rx="12" fill="#fff" stroke="#71879c" stroke-width="2"/>
+<text x="62" y="983" font-size="22" style="fill:#152b42" font-weight="700">PRINCIP ZÁLOHY PO PŘIDÁNÍ RELÉ</text>
+<text x="62" y="1012" font-size="19" style="fill:#152b42" font-weight="400">Elektronický a mechanický kontakt musí čerpadlo spustit každý samostatně.</text>
+<polyline points="90,1095 280,1095 280,1050 430,1050" fill="none" stroke="#be4536" stroke-width="3"/>
+<polyline points="280,1095 280,1150 430,1150" fill="none" stroke="#be4536" stroke-width="3"/>
+<circle cx="280" cy="1095" r="5" fill="#be4536"/>
+<rect x="430" y="1030" width="350" height="40" rx="12" fill="#eaf0f6" stroke="#71879c" stroke-width="2"/>
+<text x="447" y="1057" font-size="17" style="fill:#152b42" font-weight="400">K1: kontakt relé (např. COM–NC)</text>
+<rect x="430" y="1130" width="350" height="40" rx="12" fill="#fff4dd" stroke="#71879c" stroke-width="2"/>
+<text x="447" y="1157" font-size="17" style="fill:#152b42" font-weight="400">TH: mechanický spínací termostat</text>
+<polyline points="780,1050 860,1050 860,1095 1020,1095" fill="none" stroke="#be4536" stroke-width="3"/>
+<polyline points="780,1150 860,1150 860,1095" fill="none" stroke="#be4536" stroke-width="3"/>
+<circle cx="860" cy="1095" r="5" fill="#be4536"/>
+<text x="70" y="1078" font-size="16" style="fill:#152b42" font-weight="400">Stejný jištěný přívod</text>
+<rect x="1020" y="1064" width="225" height="64" rx="12" fill="#e1f3e7" stroke="#71879c" stroke-width="2"/>
+<text x="1037" y="1103" font-size="23" style="fill:#152b42" font-weight="700">ČERPADLO</text>
+<text x="70" y="1193" font-size="16" style="fill:#152b42" font-weight="400">Pouze funkční princip: dimenzování kontaktů, N/PE a ochrany řeší skutečný silový projekt.</text>
+<rect x="40" y="1240" width="1240" height="168" rx="12" fill="#eaf0f6" stroke="#71879c" stroke-width="2"/>
+<text x="62" y="1272" font-size="22" style="fill:#152b42" font-weight="700">Chování regulátoru</text>
+<text x="62" y="1302" font-size="19" style="fill:#152b42" font-weight="400">Zdroj ZAP a zdroj VYP nezávisle: vstup / výstup / průměr / minimum / maximum.</text>
+<text x="62" y="1330" font-size="18" style="fill:#152b42" font-weight="400">ΔT = výstup − vstup. Neplatné čidlo = null + požadavek ON. ON má přednost před OFF.</text>
+<text x="62" y="1358" font-size="18" style="fill:#152b42" font-weight="400">NONE nebudí cívku; neznamená rozepnutý NC kontakt. Mechanická záloha musí být automatická.</text>
+<text x="62" y="1386" font-size="18" style="fill:#a54822" font-weight="700">PE014F12 má 12V cívku: nepatří na 5 V ani na DRV8833 napájený 12 V.</text>
+<text x="40" y="1441" font-size="16" style="fill:#152b42" font-weight="400">SOLO 0.2.0 • 30. 10. 2026 • Schéma pro ověření, nikoliv výrobní silový podklad. Podrobnosti: ZAPOJENI.md</text>
+</svg>

@@ -1,0 +1,20 @@
+# Volitelny HA package pouze pro ACK. Pri jinem MQTT zakladu upravit obe temata.
+# Neinstalovat podruhe, pokud uz bezi ze starsiho termostat_solo.yaml.
+automation:
+  - id: kamna_solo_delivery_ack
+    alias: Kamna SOLO potvrzení doručení
+    mode: queued
+    max: 5
+    triggers:
+      - trigger: mqtt
+        topic: wifi2mqtt/termostat-solo/state
+    conditions:
+      - condition: template
+        value_template: '{{ trigger.payload_json.sequence is defined }}'
+    actions:
+      - action: mqtt.publish
+        data:
+          topic: wifi2mqtt/termostat-solo/ack
+          payload: '{{ trigger.payload_json.sequence }}'
+          qos: 1
+          retain: false
